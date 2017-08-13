@@ -2,15 +2,54 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne={
+    title: 'Article one',
+    heading: 'Article one',
+    date: 'Aug 8, 2017',
+    Content: `<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+	<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+	<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+	<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>`
+};
+
+function createTemplate(data){
+    
+    var title =  data.title;
+    var heading = data.heading;
+    var date =  data.date;
+    var content = data.content;
+    var htmlTemplate = `<!DOCTYPE html>
+    <html>
+    <head>
+    	<title>${title}</title>
+    	<link href="/ui/style.css" rel="stylesheet" /></head>
+    <body>
+    <div class="container">
+    <div>
+    	<a href="/">Home</a>
+    	<hr>
+    	<h3>${heading}</h3>
+    	<h4>${date}</h4>
+    
+    </div>
+    <div>
+        ${content}
+    </div>
+    </div>
+    </body>
+    </html>`;
+    return htmlTemplate;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+  res.send(createTemplate(articleOne));
   
 });
 
