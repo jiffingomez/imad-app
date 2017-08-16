@@ -3,7 +3,7 @@ var element = document.getElementById('text');
 element.innerHTML = 'Helloooooo';
 var img = document.getElementById('myimage');
 img.onClick = function(){
-    var interval = setInterval(moveLeft, 100);
+    //var interval = setInterval(moveLeft, 100);
     img.style.marginleft = '500px';
 
 };
