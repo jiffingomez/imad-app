@@ -1,3 +1,2 @@
 console.log('Loaded!');
-var element = document.getElementById('text');
-element.innerHTML = 'Helloooooo';
+document.getElementById("text").innerHTML = "How are you?";
