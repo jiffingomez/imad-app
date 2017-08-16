@@ -2,8 +2,11 @@ console.log('Loaded!');
 var element = document.getElementById('text');
 element.innerHTML = 'Helloooooo';
 var img = document.getElementById('myimage');
+var marginLeft = 0;
+function moveRight(){
+    marginLeft = marginLeft + 10;
+    img.style.marginLeft = marginLeft + 'px';
+}
 img.onclick = function(){
-    //var interval = setInterval(moveLeft, 100);
-    img.style.marginleft = '500px';
-
+  var interval = setInterval(moveRight, 100);
 };
